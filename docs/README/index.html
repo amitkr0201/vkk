@@ -1,0 +1,165 @@
+<h1>11ty-contentful-starter</h1>
+<p>An example site made using <a href="https://www.contentful.com/">Contentful</a> and <a href="https://www.11ty.dev/">11ty</a>. It's automatically deployed via GitHub Actions and then hosted by GitHub Pages. Data lives in Contentful, code lives with GitHub, and that's all the services you need to deploy and host a static site.</p>
+<p><img src="images/front_page.png" alt="Screenshot of Front Page"></p>
+<h1>What is this about?</h1>
+<p>This example contains <a href="https://www.11ty.dev/docs/data-js/">11ty Javascript Data Files</a> that take Contentful provided content to build a webpage. The front end utilizes <a href="https://html5up.net/solid-state">the HTML5UP Solid State theme</a> for layout and styling. When code is committed or content is published, a build process is triggered that utilizes <a href="https://github.com/peaceiris/actions-gh-pages">GitHub Actions for GitHub Pages</a> to build and deploy the website.</p>
+<h1>Getting started</h1>
+<h3>Requirements</h3>
+<p>To deploy this project you'll need accounts for the following services:</p>
+<ul>
+<li><a href="https://www.contentful.com">Contentful</a></li>
+<li>GitHub</li>
+</ul>
+<h3>Setup</h3>
+<ul>
+<li>Fork and clone this repository</li>
+</ul>
+<h4>The Contentful part (optional)</h4>
+<p>This repo currently uses an existing Contentful space configured in the <a href=".env">.env</a> file. If you'd like to replace this space with your own, so you can modify the content, you're welcome to do so.</p>
+<ul>
+<li>Create a new space using the <a href="https://github.com/contentful/contentful-cli">Contentful CLI</a></li>
+</ul>
+<pre><code class="language-console">$ contentful space create --name &quot;11ty-contentful-starter&quot;
+? Do you want to confirm the space creation? Yes
+Your user account is a member of multiple organizations. Please select the organization you would like to add your Space to.
+? Please select an organization: Shy's DevRel Playground (orgid)
+✨  Successfully created space 11ty-contentful-starter (rea8ci0yln66)
+</code></pre>
+<ul>
+<li>Set the newly created space as default space for all further CLI operations. You'll be presented with a list of all available spaces – choose the one you just created.</li>
+</ul>
+<pre><code class="language-console">$ contentful space use
+? Please select a space: 11ty-contentful-starter (rea8ci0yln66)
+Now using the 'master' Environment of Space 11ty-contentful-starter (rea8ci0yln66) when the `--environment-id` option is missing.
+</code></pre>
+<ul>
+<li>Import the provided content model (<code>./import/export.json</code>) into the newly created space.</li>
+</ul>
+<pre><code class="language-console">$ contentful space import --content-file import/export.json
+┌──────────────────────────────────────────────────┐
+│ The following entities are going to be imported: │
+├────────────────────────────────┬─────────────────┤
+│ Content Types                  │ 7               │
+├────────────────────────────────┼─────────────────┤
+│ Editor Interfaces              │ 7               │
+├────────────────────────────────┼─────────────────┤
+│ Entries                        │ 12              │
+├────────────────────────────────┼─────────────────┤
+│ Assets                         │ 6               │
+├────────────────────────────────┼─────────────────┤
+│ Locales                        │ 1               │
+├────────────────────────────────┼─────────────────┤
+│ Webhooks                       │ 0               │
+└────────────────────────────────┴─────────────────┘
+ ✔ Validating content-file
+ ✔ Initialize client (1s)
+ ✔ Checking if destination space already has any content and retrieving it (7s)
+ ✔ Apply transformations to source data (1s)
+ ✔ Push content to destination space
+   ✔ Connecting to space (1s)
+   ✔ Importing Locales (1s)
+   ✔ Importing Content Types (1s)
+   ✔ Publishing Content Types (4s)
+   ✔ Importing Editor Interfaces (1s)
+   ✔ Importing Assets (7s)
+   ✔ Publishing Assets (2s)
+   ✔ Archiving Assets (1s)
+   ✔ Importing Content Entries (3s)
+   ✔ Publishing Content Entries (5s)
+   ✔ Archiving Entries (0s)
+   ✔ Creating Web Hooks (1s)
+Finished importing all data
+┌────────────────────────┐
+│ Imported entities      │
+├───────────────────┬────┤
+│ Locales           │ 1  │
+├───────────────────┼────┤
+│ Content Types     │ 7  │
+├───────────────────┼────┤
+│ Editor Interfaces │ 7  │
+├───────────────────┼────┤
+│ Assets            │ 6  │
+├───────────────────┼────┤
+│ Published Assets  │ 6  │
+├───────────────────┼────┤
+│ Archived Assets   │ 0  │
+├───────────────────┼────┤
+│ Entries           │ 12 │
+├───────────────────┼────┤
+│ Published Entries │ 12 │
+├───────────────────┼────┤
+│ Archived Entries  │ 0  │
+├───────────────────┼────┤
+│ Webhooks          │ 0  │
+└───────────────────┴────┘
+The import took a few seconds (27s)
+
+The import was successful.
+</code></pre>
+<ul>
+<li>
+<p>For this project we have a few different Content Types on Contentful.</p>
+<ul>
+<li>This example has a few different content types appended with the word <code>Block</code>. <code>bannerBlock</code>, <code>cardBlock</code>, <code>contentBlock</code>, <code>featuretteBlock</code> and <code>footerBlock</code> all represent individual components used to create a page. You can create as many of them as you'd like.</li>
+<li><img src="images/contentBlock.png" alt="Screenshot of a Block"></li>
+<li><code>Page</code> is used to manage the layout for individual pages and also build the routes for the site. You can add individual <code>Block</code> content to create the page layout. By rearranging the blocks you can adjust the order of the page itself. The slug style section link is used to manage routing on the site. You can have multiple instances of this content type. When you publish a page it'll automatically be added to the menu.</li>
+<li><img src="images/page.png" alt="Screenshot of Page Content Type"></li>
+</ul>
+</li>
+<li>
+<p>Update the space id and access token in <a href=".env">.env</a> to use the api keys from your newly created space.</p>
+</li>
+</ul>
+<h4>Build the site</h4>
+<ul>
+<li>On the command line, navigate to your cloned repo and install your dependencies with <code>npm install</code>.</li>
+<li>Run Eleventy with <code>npx eleventy --serve</code>. We're using the <code>--serve</code> argument so eleventy will host the site for us. Navigiate to <a href="http://localhost:8080">localhost:8080</a> (or whatever port 11ty provides you if 8080 is already in use) to view the site.</li>
+</ul>
+<pre><code class="language-console">$ npx eleventy --serve
+Writing _site/README/index.html from ./README.md.
+Writing _site/index.html from ./pages.liquid.
+Writing _site/second-page/index.html from ./pages.liquid.
+Benchmark (Data): `./_data/contentful-page.js` took 6107ms (88.6%)
+Copied 2 items / Wrote 3 files in 6.72 seconds (v0.10.0)
+Watching…
+[Browsersync] Access URLs:
+ --------------------------------------
+       Local: http://localhost:8080
+    External: http://192.168.1.137:8080
+ --------------------------------------
+          UI: http://localhost:3001
+ UI External: http://localhost:3001
+ --------------------------------------
+[Browsersync] Serving files from: _site
+</code></pre>
+<h4>The GitHub part (optional)</h4>
+<p>Since we're using GitHub Actions, we'll be able to use the existing <a href="https://github.com/peaceiris/actions-gh-pages">GitHub Actions for GitHub Pages</a> repo.</p>
+<p>The implementation is identical to our other <a href="https://github.com/contentful/11ty-contentful-gallery">11ty and Contentful examples</a> and we have a full write up <a href="https://www.contentful.com/blog/2020/06/01/running-static-site-builds-with-github-actions-and-contentful/">detailing how to configure static sites with GitHub pages on our blog</a> if you'd like to deploy this site via GitHub pages. If you do follow the instructions in these examples it's important to note that if you've changed the name of this repo or set up a custom domain you'll need to adjust the <code>pathprefix</code> in the package.json.</p>
+<h1>Implementation Notes</h1>
+<ul>
+<li>This example uses one layout:
+<ul>
+<li><a href="_includes%5Clayout.liquid.html">_includes\layout.liquid.html</a>: the top level HTML structure</li>
+</ul>
+</li>
+<li>This example uses <a href="https://www.11ty.dev/docs/languages/liquid/">liquid</a> templates to generate pages.</li>
+</ul>
+<ul>
+<li><a href="_data/contentful-page.js">contentful-page.js</a> reaches out to Contentful and pulls in all entries of Content Type page. This is passed on to the pages.liquid file to handle generating the site.</li>
+<li>In Contentful, pages are handled by the page content type.
+<ul>
+<li>The page content type, contains a title, slug (for routing) and a reference field that take Content Types appended with the word <code>Block</code>.</li>
+<li>Each of these blocks map to page components.</li>
+<li>Each block type is handled by an eleventy shortcode that takes the block and converts it into HTML.</li>
+<li>The order of the blocks inside the reference field determines the order of the components on a page.</li>
+</ul>
+</li>
+<li><a href="pages.liquid">pages.liquid</a> generates all the pages.</li>
+</ul>
+<ul>
+<li>This example is deployed using GitHub pages, but not to the root <code>contentful.github.io</code> domain. We're able to use the <a href="https://www.11ty.dev/docs/config/#deploy-to-a-subdirectory-with-a-path-prefix">Path Prefix settings</a> to support deploying to a sub-directory. This is managed by the <a href="package.json">package.json</a>.</li>
+</ul>
+<h1>Config Files</h1>
+<p>This repo comes with an existing <a href=".env">.env</a> file to handle environment variables. <code>GOOGLE_TRACKING_ID</code> is optional if you'd like to add analytics to your website. <code>CTFL_SPACE</code> and <code>CTFL_ACCESSTOKEN</code> map to your Contentful API keys. This repo comes with those variables already provided to an existing Contentful space that you can use to see what the site looks like. If you'd like to adjust the Content or Content Models, you'll need to follow the export instructions about and replace these two environment variables with your own.</p>
+<h1>License</h1>
+<p>Copyright (c) 2020 Contentful GmbH. Code released under the MIT license. See <a href="LICENSE">LICENSE</a> for further details.</p>
