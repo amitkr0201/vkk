@@ -54,7 +54,7 @@
           <h2>Menu</h2>
           <ul class="links">
             {% for page in contentful-page %}
-              {% if page.slug != "/" or page.slug != "404" %}
+              {% if page.slug != "/" or page.slug != "/404" %}
                 <li><a href="{{ page.slug | url }}">{{page.title}}</a></li>
               {% endif %}
             {% endfor %}
