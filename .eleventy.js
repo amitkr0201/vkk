@@ -64,6 +64,18 @@ module.exports = function(eleventyConfig) {
                     </section>`;
     });
 
+    eleventyConfig.addShortcode("listBlock", function(listBlock) {
+        return `
+                    <section id="contact">
+                        <div class="contact">
+                            <div class="inner">
+                                <h3 class="major">${listBlock.fields.sectionTitle}</h3>
+                                ${ marked(listBlock.fields.content) }
+                            </div>
+                        </div>
+                    </section>`;
+    });
+
     eleventyConfig.addShortcode("cardBlock", async function(cardBlock) {
         const output = await Promise.all(cardBlock.fields.cards
             .map(({

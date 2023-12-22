@@ -21,6 +21,8 @@ eleventyComputed:
         {% cardBlock component %}
       {% elsif component.sys.contentType.sys.id == "bannerBlock" %}
         {% bannerBlock component %}
+      {% elsif component.sys.contentType.sys.id == "listBlock" %}
+        {% listBlock component %}
       {% elsif component.sys.contentType.sys.id == "footerBlock" %}
         {% footerBlock component %}
       {% endif %}
