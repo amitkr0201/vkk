@@ -66,12 +66,10 @@ module.exports = function(eleventyConfig) {
 
     eleventyConfig.addShortcode("listBlock", function(listBlock) {
         return `
-                    <section id="contact">
-                        <div class="contact">
-                            <div class="inner">
-                                <h3 class="major">${listBlock.fields.sectionTitle}</h3>
-                                ${ marked(listBlock.fields.content) }
-                            </div>
+                    <section id="contact" class="contact">
+                        <div class="inner">
+                            <h3 class="major">${listBlock.fields.sectionTitle}</h3>
+                            ${ marked(listBlock.fields.content) }
                         </div>
                     </section>`;
     });
