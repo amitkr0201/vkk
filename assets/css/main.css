@@ -4371,24 +4371,63 @@ input, select, textarea {
 
 	.gallery {
 		margin: 5%;
-		width: 90%;
+		padding-left: 1%;
+		padding-right: 1%;
+	}
+
+	.gallery .inner {
+		display: grid;
+		grid-template-columns: 2;
+	}
+
+	.gallery .galleryContainer {
+		/* border: 2px solid #fff; */
+		float: left;
+		height: auto;
+		margin: 5px;
+		margin-bottom: 2em;
+	}
+
+	.gallery .galleryContainer:nth-child(2n + 1) {
+		grid-column-start: 1;
+	}
+
+	.gallery .galleryContainer:nth-child(2n) {
+		grid-column-start: 2;
 	}
 
 	.gallery img {
-		max-width: 50%;
-		margin: 1%;
-		border: 1px solid #fff;
+		margin-left: auto;
+		margin-right: auto;
 		height: auto;
-		box-sizing: border-box;
+		display: block;
+		max-width: 100%;
+		border: 2px solid #fff;
+		border-radius: 1%;
+	}
+
+	.gallery .galleryContainer p {
+		text-align: center;
+		margin-right: 0;
+		margin-bottom: 0;
+		width: 100%;
+		font-weight: bold;
+		font-size: larger;
 	}
 
 	
 	@media screen and (max-width: 980px) {
+		.gallery .inner {
+			display: grid;
+			grid-template-columns: 1;
+		}
 
-		.gallery img {
-			max-width: 98%;
-			width: 98%;
-			margin: 1%;
+		.gallery .galleryContainer:nth-child(2n + 1) {
+			grid-column-start: 1;
+		}
+	
+		.gallery .galleryContainer:nth-child(2n) {
+			grid-column-start: 1;
 		}
 
 	}

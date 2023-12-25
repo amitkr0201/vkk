@@ -115,10 +115,17 @@ module.exports = function(eleventyConfig) {
     eleventyConfig.addShortcode("imageGallery", async function(imageGallery) {
         var output = []
         for (item of imageGallery.fields.images) {
-            output.push(imageProcessing(item))
+            const a = `
+            <div class="galleryContainer">
+            <p>${JSON.stringify(item.fields.description.trim())}</p>
+            ${imageProcessing(item)}
+            </div>
+            `
+            output.push(a)
         }
         return `
                     <section class="gallery">
+                        <h2>${imageGallery.fields.title}</h2>
                         <div class="inner">
                                 ${ output.join('') }
                         </div>
