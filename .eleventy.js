@@ -82,10 +82,11 @@ module.exports = function(eleventyConfig) {
                 return cards = client.getEntry(sys.id)
                     .then((card) => {
                         const d = new Date(card.fields.date);
-                        return `<article>
+                        const isPast = Date.now() > d ? "past": "upcoming"
+                        return `<article class=${isPast}>
                                     <a href="#" class="image">${imageProcessing(card.fields.image)}</a>
                                     <h3 class="major">${card.fields.sectionTitle}</h3>
-                                    <h3 class="cardDetail link"><a href="${card.fields.bookingLink}">Click here to Book Tickets!</a></h3>
+                                    <h3 class="cardDetail link"><a href="${card.fields.bookingLink}">Click here to ${Date.now() > d? "see past event's details": "Book Tickets!"}</a></h3>
                                     <table class="cardDetail">
                                         <tr>
                                             <td class="header">Location</td>
@@ -96,6 +97,7 @@ module.exports = function(eleventyConfig) {
                                             <td>${d.toLocaleString([], {dateStyle: 'long', timeStyle: 'short', hour12: false})}</td>
                                         </tr>
                                     </table>
+                                    <div class=${isPast}>${Date.now() > d? "Past Event": ""}</div>
                                 </article>`;
                     })
             }));

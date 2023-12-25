@@ -3010,6 +3010,24 @@ input, select, textarea {
 			width: calc(50% - 1.5em);
 		}
 
+			.features article.past {
+				opacity: 70%;
+				background-color: #000;
+			}
+
+			.features article .past {
+				opacity: 100%;
+				position: relative;
+				transform:rotate(-45deg);
+				z-index: 10;
+				color: #000;
+				top: -50%;
+				left: auto;
+				font-size: 7em;
+				text-shadow: 2px 0 #fff, -2px 0 #000, 0 2px #fff, 0 -2px #000,
+				1px 1px #fff, -1px -1px #000, 1px -1px #fff, -1px 1px #fff;
+			}
+
 			.features article:nth-child(2n) {
 				margin-right: 0;
 			}
