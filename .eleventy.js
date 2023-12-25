@@ -81,10 +81,21 @@ module.exports = function(eleventyConfig) {
             }) => {
                 return cards = client.getEntry(sys.id)
                     .then((card) => {
+                        const d = new Date(card.fields.date);
                         return `<article>
                                     <a href="#" class="image">${imageProcessing(card.fields.image)}</a>
                                     <h3 class="major">${card.fields.sectionTitle}</h3>
-                                    ${ documentToHtmlString(card.fields.content) }
+                                    <h3 class="cardDetail link"><a href="${card.fields.bookingLink}">Click here to Book Tickets!</a></h3>
+                                    <table class="cardDetail">
+                                        <tr>
+                                            <td class="header">Location</td>
+                                            <td>${documentToHtmlString(card.fields.content)}</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="header">Date</td>
+                                            <td>${d.toLocaleString([], {dateStyle: 'long', timeStyle: 'short', hour12: false})}</td>
+                                        </tr>
+                                    </table>
                                 </article>`;
                     })
             }));

@@ -3014,6 +3014,28 @@ input, select, textarea {
 				margin-right: 0;
 			}
 
+			.features article .cardDetail td {
+				margin-bottom: 0.5em;
+				padding-top: 0;
+				padding-bottom: 0;
+			}
+
+			.features article .cardDetail td.header {
+				font-weight: bold;
+			}
+
+			.features article .cardDetail td p {
+				margin-bottom: 0em;
+				padding-top: 0;
+				padding-bottom: 0;
+			}
+
+			.features article .cardDetail.link {
+				margin-bottom: 1em;
+				text-decoration: underline;
+				color: #ff0000;
+			}
+
 			.features article .image {
 				border-radius: 5px 5px 0 0;
 				display: block;
@@ -3551,7 +3573,7 @@ input, select, textarea {
 
 		#wrapper > header .inner {
 			margin: 0 auto;
-			width: 55em;
+			width: 80em;
 		}
 
 		#wrapper > header h2 {
@@ -3598,6 +3620,7 @@ input, select, textarea {
 
 			#wrapper > header .inner {
 				width: 100%;
+				display: inline;
 			}
 
 	}
@@ -3672,7 +3695,7 @@ input, select, textarea {
 		.wrapper .inner {
 			padding: 3em 0 1em 0 ;
 			margin: 0 auto;
-			width: 55em;
+			width: 80em;
 		}
 
 		.wrapper.style1 {
@@ -3805,7 +3828,7 @@ input, select, textarea {
 			.wrapper.spotlight .image {
 				border-radius: 100%;
 				margin: 0 3em 2em 0;
-				width: 22em;
+				width: 32em;
 				overflow: hidden;
 				-ms-flex: 1;
 			}
@@ -4014,7 +4037,8 @@ input, select, textarea {
 			.wrapper.spotlight .image {
 				margin: 0 0 1em 0 !important;
 				max-width: 85%;
-				width: 12em;
+				/* width: 12em; */
+				display: inline;
 			}
 
 		}
