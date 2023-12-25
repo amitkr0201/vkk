@@ -3614,7 +3614,12 @@ input, select, textarea {
 			display: inline;
 		}
 
-		#wrapper > header h2,p {
+		#wrapper > header h2 {
+			text-shadow: 2px 0 #000, -2px 0 #000, 0 2px #000, 0 -2px #000,
+             1px 1px #000, -1px -1px #000, 1px -1px #000, -1px 1px #000;
+		}
+
+		#wrapper > header p {
 			text-shadow: 2px 0 #000, -2px 0 #000, 0 2px #000, 0 -2px #000,
              1px 1px #000, -1px -1px #000, 1px -1px #000, -1px 1px #000;
 		}
@@ -4297,6 +4302,32 @@ input, select, textarea {
 
 		#footer .inner {
 			padding: 2em 1.5em 0.1em 1.5em ;
+		}
+
+	}
+
+/* Gallery */
+
+	.gallery {
+		margin: 5%;
+		width: 90%;
+	}
+
+	.gallery img {
+		max-width: 50%;
+		margin: 1%;
+		border: 1px solid #fff;
+		height: auto;
+		box-sizing: border-box;
+	}
+
+	
+	@media screen and (max-width: 980px) {
+
+		.gallery img {
+			max-width: 98%;
+			width: 98%;
+			margin: 1%;
 		}
 
 	}

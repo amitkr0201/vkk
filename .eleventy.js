@@ -110,6 +110,19 @@ module.exports = function(eleventyConfig) {
                     </section>`;
     });
 
+    eleventyConfig.addShortcode("imageGallery", async function(imageGallery) {
+        var output = []
+        for (item of imageGallery.fields.images) {
+            output.push(imageProcessing(item))
+        }
+        return `
+                    <section class="gallery">
+                        <div class="inner">
+                                ${ output.join('') }
+                        </div>
+                    </section>`;
+    });
+
     eleventyConfig.addShortcode("featuretteBlock", function(
         featuretteBlock) {
         if(featuretteBlock.fields.imageLocation) {
