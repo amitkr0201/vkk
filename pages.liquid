@@ -23,6 +23,8 @@ eleventyComputed:
         {% bannerBlock component %}
       {% elsif component.sys.contentType.sys.id == "imageGallery" %}
         {% imageGallery component %}
+      {% elsif component.sys.contentType.sys.id == "youTubeGallery" %}
+        {% youTubeGallery component %}
       {% elsif component.sys.contentType.sys.id == "listBlock" %}
         {% listBlock component %}
       {% elsif component.sys.contentType.sys.id == "footerBlock" %}

@@ -177,4 +177,24 @@ module.exports = function(eleventyConfig) {
         }
     });
 
+    eleventyConfig.addShortcode("youTubeGallery", async function(youTubeGallery) {
+        const output = await Promise.all(youTubeGallery.fields.youTubeLinks
+            .map(({
+                sys
+            }) => {
+                return youTubeLinks = client.getEntry(sys.id)
+                    .then((youTubeLink) => {
+                        return `
+                            <div class="embedFrameParent">
+                                <iframe class="embedFrame" src="${youTubeLink.fields.youTubeUrl}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                            </div>
+                        `;
+                    })
+            }));
+        return `
+                    <section id="${youTubeGallery.fields.title}" class="embed">
+                        ${ output.join('') }
+                    </section>`;
+    });
+
 };

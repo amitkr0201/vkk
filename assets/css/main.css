@@ -4429,3 +4429,38 @@ input, select, textarea {
 		transition: .3s;
 	}
 }
+
+
+/* Embed */
+
+	.embed {
+		width: 90%;
+		padding-left: 5%;
+		margin: auto;
+		display: grid;
+	}
+
+		.embed .embedFrame {
+			height: 300px;
+			width: 90%;
+			margin-bottom: 2%;
+			border: 2px solid #fff;
+		}
+
+		.embed .embedFrameParent:nth-child(2n) {
+			grid-column-start: 2;
+		}
+
+		.embed .embedFrameParent:nth-child(2n+1) {
+			grid-column-start: 1;
+		}
+
+		@media screen and (max-width: 720px) {
+			.embed .embedFrameParent:nth-child(2n) {
+				grid-column-start: 1;
+			}
+	
+			.embed .embedFrameParent:nth-child(2n+1) {
+				grid-column-start: 1;
+			}
+		}
