@@ -3578,7 +3578,6 @@ input, select, textarea {
 
 		#wrapper > header .inner {
 			margin: 0 auto;
-			width: 80em;
 		}
 
 		#wrapper > header h2 {
@@ -3586,6 +3585,7 @@ input, select, textarea {
 			font-size: 2em;
 			margin-bottom: 0.8em;
 			padding-bottom: 0.4em;
+			margin-left: 5%;
 		}
 
 		#wrapper > header p {
@@ -3595,36 +3595,42 @@ input, select, textarea {
 			letter-spacing: 0.1em;
 			line-height: 2;
 			text-transform: uppercase;
+			margin-left: 5%;
 		}
 
 	@media screen and (max-width: 1280px) {
 
 		#wrapper > header {
 			padding: 9em 0 6.25em 0 ;
-			background-color: #2e3141;
-			background-image: linear-gradient(to top, rgba(179, 3, 17, 1), rgba(179, 3, 17, 1)), url("../../images/bg.jpg");
-			background-size: auto,
- cover;
-			background-position: center,
- 0% 30%;
-			margin-bottom: -6.5em;
+			background-image: url("images/Designer.png");
+			background-repeat: no-repeat;
+			background-position-y: -10%;
+			background-position-x: left;
+			background-size: cover;
 		}
 
+		#wrapper > header .inner {
+			width: 90%;
+			display: inline;
+		}
+
+		#wrapper > header h2,p {
+			text-shadow: 2px 0 #000, -2px 0 #000, 0 2px #000, 0 -2px #000,
+             1px 1px #000, -1px -1px #000, 1px -1px #000, -1px 1px #000;
+		}
 	}
 
 	@media screen and (max-width: 980px) {
 
 		#wrapper > header {
 			padding: 11em 3em 7.375em 3em ;
-			background-size: auto,
- cover;
-			background-position: center,
- 0% 0%;
+			background-size: cover;
+			background-position-x: left;
 			margin-bottom: -4.75em;
 		}
 
 			#wrapper > header .inner {
-				width: 100%;
+				width: 90%;
 				display: inline;
 			}
 
@@ -3633,14 +3639,19 @@ input, select, textarea {
 	@media screen and (max-width: 736px) {
 
 		#wrapper > header {
-			padding: 6.5em 2em 3em 2em ;
-			background-size: auto,
- 125%;
+			padding: 6.5em 2em 3em 0.5em ;
+			background-size: 150%;
+			background-position-x: left;
 			margin-bottom: -2.5em;
 		}
 
 			#wrapper > header h2 {
 				font-size: 1.25em;
+			}
+
+			#wrapper > header .inner {
+				width: 90%;
+				display: inline;
 			}
 
 			#wrapper > header p {
@@ -3700,7 +3711,7 @@ input, select, textarea {
 		.wrapper .inner {
 			padding: 3em 0 1em 0 ;
 			margin: 0 auto;
-			width: 80em;
+			width: 90%;
 		}
 
 		.wrapper.style1 {
