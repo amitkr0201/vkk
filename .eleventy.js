@@ -114,22 +114,39 @@ module.exports = function(eleventyConfig) {
 
     eleventyConfig.addShortcode("imageGallery", async function(imageGallery) {
         var output = []
+        var counter = 0;
         for (item of imageGallery.fields.images) {
-            const a = `
-            <div class="galleryContainer">
-            <p>${JSON.stringify(item.fields.description.trim())}</p>
-            ${imageProcessing(item)}
-            </div>
-            `
-            output.push(a)
+            if (counter == 0 || counter == Math.floor(Object.keys(imageGallery.fields.images).length/2) + 1){
+                output.push(`
+                    <div class="gallery__column">
+                `)
+            }
+            output.push(`
+            <a href="javascript:void(0)" class="gallery__link" >
+                <figure class="gallery__thumb">
+                <img class="gallery__image"
+                srcset="https:${item.fields.file.url}?w=480&fm=webp&q=80&fit=fill&f=faces 480w,
+                https:${item.fields.file.url}?w=800&fm=webp&q=80&fit=fill&f=faces 800w" sizes="(max-width: 600px) 480px,800px"
+                src="https:${item.fields.file.url}?w=480&fit=fill&f=faces"
+                alt="${item.fields.title}" loading="lazy">
+                    <figcaption class="gallery__caption">${item.fields.title.trim()}</figcaption>
+                </figure>
+            </a>
+            `)
+            
+            // OR condition in case gallery has Odd number of images
+            if ((counter > Object.keys(imageGallery.fields.images).length/2 - 1 && counter <= Object.keys(imageGallery.fields.images).length/2) || (counter == Object.keys(imageGallery.fields.images).length -1)){
+                output.push(`
+                    </div>
+                `)
+            }
+            counter ++
         }
         return `
-                    <section class="gallery">
-                        <h2>${imageGallery.fields.title}</h2>
-                        <div class="inner">
-                                ${ output.join('') }
-                        </div>
-                    </section>`;
+                <h2 class="imageGallery">${imageGallery.fields.title}</h2>
+                <div class="imageGallery">
+                    ${ output.join('') }
+                </div>`;
     });
 
     eleventyConfig.addShortcode("featuretteBlock", function(
