@@ -3014,6 +3014,28 @@ input, select, textarea {
 				margin-right: 0;
 			}
 
+			.features article .cardDetail td {
+				margin-bottom: 0.5em;
+				padding-top: 0;
+				padding-bottom: 0;
+			}
+
+			.features article .cardDetail td.header {
+				font-weight: bold;
+			}
+
+			.features article .cardDetail td p {
+				margin-bottom: 0em;
+				padding-top: 0;
+				padding-bottom: 0;
+			}
+
+			.features article .cardDetail.link {
+				margin-bottom: 1em;
+				text-decoration: underline;
+				color: #ff0000;
+			}
+
 			.features article .image {
 				border-radius: 5px 5px 0 0;
 				display: block;
@@ -3546,12 +3568,16 @@ input, select, textarea {
 /* Wrapper */
 
 	#wrapper > header {
-		padding: 11em 0 2.25em 0 ;
+		padding: 11em 0 2.25em 0;
+		background-image: url("images/Designer.png");
+  		background-repeat: no-repeat;
+  		background-position-x: right;
+		background-position-y: 200%;
+		background-size: 40%;
 	}
 
 		#wrapper > header .inner {
 			margin: 0 auto;
-			width: 55em;
 		}
 
 		#wrapper > header h2 {
@@ -3559,6 +3585,7 @@ input, select, textarea {
 			font-size: 2em;
 			margin-bottom: 0.8em;
 			padding-bottom: 0.4em;
+			margin-left: 5%;
 		}
 
 		#wrapper > header p {
@@ -3568,36 +3595,48 @@ input, select, textarea {
 			letter-spacing: 0.1em;
 			line-height: 2;
 			text-transform: uppercase;
+			margin-left: 5%;
 		}
 
 	@media screen and (max-width: 1280px) {
 
 		#wrapper > header {
 			padding: 9em 0 6.25em 0 ;
-			background-color: #2e3141;
-			background-image: linear-gradient(to top, rgba(179, 3, 17, 1), rgba(179, 3, 17, 1)), url("../../images/bg.jpg");
-			background-size: auto,
- cover;
-			background-position: center,
- 0% 30%;
-			margin-bottom: -6.5em;
+			background-image: url("images/Designer.png");
+			background-repeat: no-repeat;
+			background-position-y: -10%;
+			background-position-x: left;
+			background-size: cover;
 		}
 
+		#wrapper > header .inner {
+			width: 90%;
+			display: inline;
+		}
+
+		#wrapper > header h2 {
+			text-shadow: 2px 0 #000, -2px 0 #000, 0 2px #000, 0 -2px #000,
+             1px 1px #000, -1px -1px #000, 1px -1px #000, -1px 1px #000;
+		}
+
+		#wrapper > header p {
+			text-shadow: 2px 0 #000, -2px 0 #000, 0 2px #000, 0 -2px #000,
+             1px 1px #000, -1px -1px #000, 1px -1px #000, -1px 1px #000;
+		}
 	}
 
 	@media screen and (max-width: 980px) {
 
 		#wrapper > header {
 			padding: 11em 3em 7.375em 3em ;
-			background-size: auto,
- cover;
-			background-position: center,
- 0% 0%;
+			background-size: cover;
+			background-position-x: left;
 			margin-bottom: -4.75em;
 		}
 
 			#wrapper > header .inner {
-				width: 100%;
+				width: 90%;
+				display: inline;
 			}
 
 	}
@@ -3605,14 +3644,19 @@ input, select, textarea {
 	@media screen and (max-width: 736px) {
 
 		#wrapper > header {
-			padding: 6.5em 2em 3em 2em ;
-			background-size: auto,
- 125%;
+			padding: 6.5em 2em 3em 0.5em ;
+			background-size: 150%;
+			background-position-x: left;
 			margin-bottom: -2.5em;
 		}
 
 			#wrapper > header h2 {
 				font-size: 1.25em;
+			}
+
+			#wrapper > header .inner {
+				width: 90%;
+				display: inline;
 			}
 
 			#wrapper > header p {
@@ -3672,7 +3716,7 @@ input, select, textarea {
 		.wrapper .inner {
 			padding: 3em 0 1em 0 ;
 			margin: 0 auto;
-			width: 55em;
+			width: 90%;
 		}
 
 		.wrapper.style1 {
@@ -3805,7 +3849,7 @@ input, select, textarea {
 			.wrapper.spotlight .image {
 				border-radius: 100%;
 				margin: 0 3em 2em 0;
-				width: 22em;
+				width: 32em;
 				overflow: hidden;
 				-ms-flex: 1;
 			}
@@ -4014,7 +4058,8 @@ input, select, textarea {
 			.wrapper.spotlight .image {
 				margin: 0 0 1em 0 !important;
 				max-width: 85%;
-				width: 12em;
+				/* width: 12em; */
+				display: inline;
 			}
 
 		}
@@ -4257,6 +4302,32 @@ input, select, textarea {
 
 		#footer .inner {
 			padding: 2em 1.5em 0.1em 1.5em ;
+		}
+
+	}
+
+/* Gallery */
+
+	.gallery {
+		margin: 5%;
+		width: 90%;
+	}
+
+	.gallery img {
+		max-width: 50%;
+		margin: 1%;
+		border: 1px solid #fff;
+		height: auto;
+		box-sizing: border-box;
+	}
+
+	
+	@media screen and (max-width: 980px) {
+
+		.gallery img {
+			max-width: 98%;
+			width: 98%;
+			margin: 1%;
 		}
 
 	}
